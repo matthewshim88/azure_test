@@ -1,0 +1,50 @@
+	<section id='container'>
+		<div id='goldBox'>
+			<p>Your Gold: @ViewBag.gold</p>
+			<input id='score' type='text' name='goldScore' value='@ViewBag.gold'>
+		</div>
+		<div id='formContainer'>
+			<div class='formBox'>Farm
+				<p>Earns 10-20 Gold</p>
+				<form class='form' action='/process_money' method='POST'>
+					<input class='goldbutton' type='submit' value='Find Gold!'>
+					<input type="hidden" name="building" value="Farm">	
+				</form>
+			</div>
+			<div class='formBox'>Cave
+				<p>Earns 5-10 Gold</p>
+				<form class='form' action='/process_money' method='POST'>
+					<input class='goldbutton' type='submit' value='Find Gold!'>
+					<input type="hidden" name="building" value="Cave">
+				</form>
+			</div>
+			<div class='formBox'>House
+				<p>Earns 2-5 Gold</p>
+				<form class='form' action='/process_money' method='POST'>
+					<input class='goldbutton' type='submit' value='Find Gold!'>
+					<input type="hidden" name="building" value="House">
+				</form>
+			</div>
+			<div class='formBox'>Casino
+				<p>Lose 50 or gain 50 Gold</p>
+				<form class='form' action='/process_money' method='POST'>
+					<input class='goldbutton' type='submit' value='Find Gold!'>
+					<input type="hidden" name="building" value="Casino">
+				</form>
+			</div>
+		</div>
+		<div id='activityContainer'>
+            @{
+                foreach (string Current in ViewBag.activities)
+                {
+                    <div>
+                        @Html.Raw(@Current)
+                    </div>
+                }
+            }
+			
+		</div>
+		 <form action="/reset" method="POST">
+            <input type="submit" name="reset" value="reset"/>
+        </form>
+	</section>
